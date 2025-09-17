@@ -1,0 +1,29 @@
+{
+  "totalRecipes": 3,
+  "recipeTypes": {
+    "Java": 3
+  },
+  "recipes": [
+    {
+      "className": "FindCallGraph",
+      "displayName": "Find call graph",
+      "description": "Produces a data table where each row represents a method call.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite-all/src/main/java/org/openrewrite/FindCallGraph.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDuplicateSourceFiles",
+      "displayName": "Find duplicate source files",
+      "description": "Record the presence of LSTs with duplicate paths, indicating that the same file was parsed more than once.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite-all/src/main/java/org/openrewrite/FindDuplicateSourceFiles.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "LanguageComposition",
+      "displayName": "Language composition report",
+      "description": "",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite-all/src/main/java/org/openrewrite/LanguageComposition.java",
+      "recipeType": "Java"
+    }
+  ]
+}

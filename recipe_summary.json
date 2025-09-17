@@ -1,0 +1,2486 @@
+{
+  "totalRecipes": 354,
+  "recipeTypes": {
+    "Java": 354
+  },
+  "recipes": [
+    {
+      "className": "MavenOnlyRecipe",
+      "displayName": "Fail if run on not-maven",
+      "description": "Super description.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/test/java/org/openrewrite/maven/AssertionsTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeManagedDependencyGroupIdAndArtifactId",
+      "displayName": "Change Maven managed dependency groupId, artifactId and optionally the version",
+      "description": "Change the groupId, artifactId and optionally the version of a specified Maven managed dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangeManagedDependencyGroupIdAndArtifactId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveRedundantDependencyVersions",
+      "displayName": "Remove redundant explicit dependency and plugin versions",
+      "description": "Remove explicitly-specified dependency/plugin versions when a parent POM's `dependencyManagement`/`pluginManagement` ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveRedundantDependencyVersions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddProfile",
+      "displayName": "Add Maven profile",
+      "description": "Add a maven profile to a `pom.xml` file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddProfile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveManagedDependency",
+      "displayName": "Remove Maven managed dependency",
+      "description": "Removes a single managed dependency from the <dependencyManagement><dependencies> section of the pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveManagedDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyScope",
+      "displayName": "Change Maven dependency scope",
+      "description": "Add or alter the scope of the specified dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangeDependencyScope.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateMavenWrapper",
+      "displayName": "Update Maven wrapper",
+      "description": "Update the version of Maven used in an existing Maven wrapper.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpdateMavenWrapper.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradeTransitiveDependencyVersion",
+      "displayName": "Upgrade transitive Maven dependencies",
+      "description": "Upgrades the version of a transitive dependency in a Maven pom file. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpgradeTransitiveDependencyVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyClassifier",
+      "displayName": "Change Maven dependency classifier",
+      "description": "Add or alter the classifier of the specified dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangeDependencyClassifier.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeParentPom",
+      "displayName": "Change Maven parent",
+      "description": "Change the parent pom of a Maven pom.xml by matching the existing parent via groupId and artifactId, ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangeParentPom.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EnableDevelocityBuildCache",
+      "displayName": "Enable Develocity build cache",
+      "description": "Add Develocity build cache configuration to any `.mvn/` Develocity configuration file that lack existing configuration.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/EnableDevelocityBuildCache.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "IncrementProjectVersion",
+      "displayName": "Increment Maven project version",
+      "description": "Increase Maven project version by incrementing either the major, minor, or patch version as defined by ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/IncrementProjectVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RenamePropertyKey",
+      "displayName": "Rename Maven property key",
+      "description": "Rename the specified Maven project property key leaving the value unchanged.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RenamePropertyKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyGroupIdAndArtifactId",
+      "displayName": "Change Maven dependency",
+      "description": "Change a Maven dependency coordinates. The `newGroupId` or `newArtifactId` **MUST** be different from before. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangeDependencyGroupIdAndArtifactId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddRuntimeConfig",
+      "displayName": "Add a configuration option for the Maven runtime",
+      "description": "Add a new configuration option for the Maven runtime if not already present.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddRuntimeConfig.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePackaging",
+      "displayName": "Set Maven project packaging",
+      "description": "Sets the packaging type of Maven projects. Either adds the packaging tag if it is missing or changes its context if present.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangePackaging.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveExclusion",
+      "displayName": "Remove exclusion",
+      "description": "Remove any matching exclusion from any matching dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveExclusion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddPlugin",
+      "displayName": "Add Maven plugin",
+      "description": "Add the specified Maven plugin to the pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeProjectVersion",
+      "displayName": "Change Maven Project Version",
+      "description": "Change the project version of a Maven pom.xml. Identifies the project to be changed by its groupId and artifactId. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangeProjectVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradePluginVersion",
+      "displayName": "Upgrade Maven plugin version",
+      "description": "Upgrade the version of a plugin using Node Semver advanced range selectors, ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpgradePluginVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddCommentToMavenDependency",
+      "displayName": "Add a comment to a `Maven` dependency",
+      "description": "Adds a comment as the first element in a `Maven` dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddCommentToMavenDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UseMavenCompilerPluginReleaseConfiguration",
+      "displayName": "Use Maven compiler plugin release configuration",
+      "description": "Replaces any explicit `source` or `target` configuration (if present) on the `maven-compiler-plugin` with ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UseMavenCompilerPluginReleaseConfiguration.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveDuplicateDependencies",
+      "displayName": "Remove duplicate Maven dependencies",
+      "description": "Removes duplicated dependencies in the `<dependencies>` and `<dependencyManagement>` sections of the `pom.xml`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveDuplicateDependencies.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemovePlugin",
+      "displayName": "Remove Maven plugin",
+      "description": "Remove the specified Maven plugin from the POM.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemovePlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradeParentVersion",
+      "displayName": "Upgrade Maven parent project version",
+      "description": "Set the parent pom version number according to a [version selector](https://docs.openrewrite.org/reference/dependency-version-selectors) ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpgradeParentVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateMavenProjectPropertyJavaVersion",
+      "displayName": "Update Maven Java project properties",
+      "description": "",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpdateMavenProjectPropertyJavaVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddPluginDependency",
+      "displayName": "Add Maven plugin dependencies",
+      "description": "Adds the specified dependencies to a Maven plugin. Will not add the plugin if it does not already exist in the pom.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddPluginDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddParentPom",
+      "displayName": "Add Maven parent",
+      "description": "Add a parent pom to a Maven pom.xml. Does nothing if a parent pom is already present.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddParentPom.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePluginConfiguration",
+      "displayName": "Change Maven plugin configuration",
+      "description": "Apply the specified configuration to a Maven plugin. Will not add the plugin if it does not already exist in the pom.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangePluginConfiguration.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateScmFromGitOrigin",
+      "displayName": "Update SCM with Git origin",
+      "description": "Updates or adds the Maven `<scm>` tag based on the Git remote origin. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpdateScmFromGitOrigin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ManageDependencies",
+      "displayName": "Manage dependencies",
+      "description": "Make existing dependencies managed by moving their version to be specified in the dependencyManagement section of the POM.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ManageDependencies.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePluginDependencies",
+      "displayName": "Change Maven plugin dependencies",
+      "description": "Applies the specified dependencies to a Maven plugin. Will not add the plugin if it does not already exist in the pom.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangePluginDependencies.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveRedundantProperties",
+      "displayName": "Remove redundant properties",
+      "description": "Remove properties when a parent POM specifies the same property.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveRedundantProperties.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradeDependencyVersion",
+      "displayName": "Upgrade Maven dependency version",
+      "description": "Upgrade the version of a dependency by specifying a group and (optionally) an artifact using Node Semver ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/UpgradeDependencyVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveUnusedProperties",
+      "displayName": "Remove unused properties",
+      "description": "Detect and remove Maven property declarations which do not have any usage within the project.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveUnusedProperties.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveRepository",
+      "displayName": "Remove repository",
+      "description": "Removes a matching Maven repository.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveRepository.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddDependency",
+      "displayName": "Add Maven dependency",
+      "description": "Add a Maven dependency to a `pom.xml` file in the correct scope based on where it is used.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "OrderPomElements",
+      "displayName": "Order POM elements",
+      "description": "Order POM elements according to the [recommended](https://maven.apache.org/developers/conventions/code.html#pom-code-convention) order.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/OrderPomElements.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ModernizeObsoletePoms",
+      "displayName": "Modernize obsolete Maven poms",
+      "description": "Very old Maven poms are no longer supported by current versions of Maven. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ModernizeObsoletePoms.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddProperty",
+      "displayName": "Add Maven project property",
+      "description": "Add a new property to the Maven project property. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ExcludeDependency",
+      "displayName": "Exclude Maven dependency",
+      "description": "Exclude specified dependency from any dependency that transitively includes it.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ExcludeDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePluginGroupIdAndArtifactId",
+      "displayName": "Change Maven plugin group and artifact ID",
+      "description": "Change the groupId and/or the artifactId of a specified Maven plugin. Optionally update the plugin version. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangePluginGroupIdAndArtifactId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddManagedDependency",
+      "displayName": "Add managed Maven dependency",
+      "description": "Add a managed Maven dependency to a `pom.xml` file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddManagedDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePluginExecutions",
+      "displayName": "Change Maven plugin executions",
+      "description": "Apply the specified executions to a Maven plugin. Will not add the plugin if it does not already exist in the pom.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangePluginExecutions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemovePluginDependency",
+      "displayName": "Remove Maven plugin dependency",
+      "description": "Removes a dependency from the <dependencies> section of a plugin in the pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemovePluginDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePropertyValue",
+      "displayName": "Change Maven project property value",
+      "description": "Changes the specified Maven project property value leaving the key intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/ChangePropertyValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddAnnotationProcessor",
+      "displayName": "Add an annotation processor to `maven-compiler-plugin`",
+      "description": "Add an annotation processor to the maven compiler plugin. Will not do anything if it already exists. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddAnnotationProcessor.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveDependency",
+      "displayName": "Remove Maven dependency",
+      "description": "Removes a single dependency from the <dependencies> section of the pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveProperty",
+      "displayName": "Remove Maven project property",
+      "description": "Removes the specified Maven project property from the pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/RemoveProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddDevelocityMavenExtension",
+      "displayName": "Add the Develocity Maven extension",
+      "description": "To integrate the Develocity Maven extension into Maven projects, ensure that the ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddDevelocityMavenExtension.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddRepository",
+      "displayName": "Add repository",
+      "description": "Adds a new Maven Repository or updates a matching repository.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/AddRepository.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UseHttpsForRepositories",
+      "displayName": "Use HTTPS for repositories",
+      "description": "Use HTTPS for repository URLs.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/security/UseHttpsForRepositories.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyPluginGoalResolveSources",
+      "displayName": "Migrate to `maven-dependency-plugin` goal `resolve-sources`",
+      "description": "Migrate from `sources` to `resolve-sources` for the `maven-dependency-plugin`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/plugin/DependencyPluginGoalResolveSources.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ModuleHasDependency",
+      "displayName": "Module has dependency",
+      "description": "Searches for Maven modules that have a dependency matching the specified groupId and artifactId. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/ModuleHasDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDependency",
+      "displayName": "Find Maven dependency",
+      "description": "Finds first-order dependency uses, i.e. dependencies that are defined directly in a project.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindMavenSettings",
+      "displayName": "Find effective maven settings",
+      "description": "List the effective maven settings file for the current project.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindMavenSettings.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ModuleHasPlugin",
+      "displayName": "Module has plugin",
+      "description": "Searches for Maven modules that have a plugin matching the specified groupId and artifactId. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/ModuleHasPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyInsight",
+      "displayName": "Maven dependency insight",
+      "description": "Find direct and transitive dependencies matching a group, artifact, and scope. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/DependencyInsight.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DoesNotIncludeDependency",
+      "displayName": "Does not include Maven dependency",
+      "description": "A precondition which returns false if visiting a Maven pom which includes the specified dependency in the classpath of some scope. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/DoesNotIncludeDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindProperties",
+      "displayName": "Find Maven project properties",
+      "description": "Finds the specified Maven project properties within a pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindProperties.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindScm",
+      "displayName": "Find SCM tag",
+      "description": "Finds any `<scm>` tag directly inside the `<project>` root of a Maven pom.xml file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindScm.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindManagedDependency",
+      "displayName": "Find Maven dependency management entry",
+      "description": "Finds first-order dependency management entries, i.e. dependencies that are defined directly in a project.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindManagedDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindRepositoryOrder",
+      "displayName": "Maven repository order",
+      "description": "Determine the order in which dependencies will be resolved for each `pom.xml` based on its defined repositories and effective `settings.xml`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindRepositoryOrder.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ParentPomInsight",
+      "displayName": "Maven parent insight",
+      "description": "Find Maven parents matching a `groupId` and `artifactId`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/ParentPomInsight.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindMavenProject",
+      "displayName": "Find Maven projects",
+      "description": "Maven projects are `pom.xml` files with a `MavenResolutionResult` marker.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindMavenProject.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EffectiveDependencies",
+      "displayName": "Effective dependencies",
+      "description": "Emit the data of binary dependency relationships.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/EffectiveDependencies.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EffectiveMavenRepositories",
+      "displayName": "List effective Maven repositories",
+      "description": "Lists the Maven repositories that would be used for dependency resolution, in order of precedence. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/EffectiveMavenRepositories.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EffectiveManagedDependencies",
+      "displayName": "Effective managed dependencies",
+      "description": "Emit the data of binary dependency relationships.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/EffectiveManagedDependencies.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindPlugin",
+      "displayName": "Find Maven plugin",
+      "description": "Finds a Maven plugin within a pom.xml.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/search/FindPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "PrintMavenAsDot",
+      "displayName": "Print Maven dependency hierarchy in DOT format",
+      "description": "The DOT language format is specified [here](https://graphviz.org/doc/info/lang.html).",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/utilities/PrintMavenAsDot.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ExplicitPluginVersion",
+      "displayName": "Add explicit plugin versions",
+      "description": "Add explicit plugin versions to POMs for reproducibility, as [MNG-4173](https://issues.apache.org/jira/browse/MNG-4173) removes automatic version resolution for POM plugins.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/cleanup/ExplicitPluginVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ExplicitPluginGroupId",
+      "displayName": "Add explicit `groupId` to Maven plugins",
+      "description": "Add the default `<groupId>org.apache.maven.plugins</groupId>` to plugins for clarity.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/cleanup/ExplicitPluginGroupId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyManagementDependencyRequiresVersion",
+      "displayName": "Dependency management dependencies should have a version",
+      "description": "If they don't have a version, they can't possibly affect dependency resolution anywhere, and can be safely removed.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-maven/src/main/java/org/openrewrite/maven/cleanup/DependencyManagementDependencyRequiresVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddKeyValue",
+      "displayName": "Add value to JSON Object",
+      "description": "Adds a `value` at the specified `keyPath` with the specified `key`, if the key doesn't already exist.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/AddKeyValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeKey",
+      "displayName": "Change key",
+      "description": "Change a JSON mapping entry key, while leaving the value intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/ChangeKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteKey",
+      "displayName": "Delete key",
+      "description": "Delete a JSON mapping entry key.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/DeleteKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeValue",
+      "displayName": "Change value",
+      "description": "Change a JSON mapping entry value leaving the key intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/ChangeValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindKey",
+      "displayName": "Find JSON object members",
+      "description": "Find JSON object members by JsonPath expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/search/FindKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "WrappingAndBraces",
+      "displayName": "JSON new lines",
+      "description": "Split members into separate lines in JSON.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/format/WrappingAndBraces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutoFormat",
+      "displayName": "Format JSON",
+      "description": "Format JSON code using a standard comprehensive set of JSON formatting recipes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/format/AutoFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "Indents",
+      "displayName": "JSON indent",
+      "description": "Format tabs and indents in JSON.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-json/src/main/java/org/openrewrite/json/format/Indents.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "WriteModel",
+      "displayName": "Write the AST model",
+      "description": "Expand the model into an AST with Lombok annotations, Padding classes, etc.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/tools/language-parser-builder/src/model/java/generate/WriteModel.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "WritePrinter",
+      "displayName": "Write the boilerplate for `TomlPrinter`",
+      "description": "Every print method starts with `visitSpace` then `visitMarkers`. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/tools/language-parser-builder/src/model/java/generate/WritePrinter.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "WriteVisitorMethods",
+      "displayName": "Write TOML boilerplate",
+      "description": "Write the boilerplate for `TomlVisitor` and `TomlIsoVisitor`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/tools/language-parser-builder/src/model/java/generate/WriteVisitorMethods.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "WritePaddingAccessors",
+      "displayName": "Write accessors for padded parts of the model",
+      "description": "Write accessors for padded parts of the model.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/tools/language-parser-builder/src/model/java/generate/WritePaddingAccessors.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AppendToSequence",
+      "displayName": "Append to sequence",
+      "description": "Append item to YAML sequence.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/AppendToSequence.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeKey",
+      "displayName": "Change key",
+      "description": "Change a YAML mapping entry key while leaving the value intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/ChangeKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UnfoldProperties",
+      "displayName": "Unfold YAML properties",
+      "description": "Transforms dot-separated property keys in YAML files into nested map hierarchies to enhance clarity and readability, or for compatibility with tools expecting structured YAML.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/UnfoldProperties.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePropertyKey",
+      "displayName": "Change property key",
+      "description": "Change a YAML property key while leaving the value intact. Expects dot notation for nested YAML mappings, similar to how Spring Boot interprets `application.yml` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/ChangePropertyKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CreateYamlFile",
+      "displayName": "Create YAML file",
+      "description": "Create a new YAML file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/CreateYamlFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CopyValue",
+      "displayName": "Copy YAML value",
+      "description": "Copies a YAML value from one key to another. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/CopyValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CommentOutProperty",
+      "displayName": "Comment out property",
+      "description": "Comment out a YAML property and add a comment in front.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/CommentOutProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CoalesceProperties",
+      "displayName": "Coalesce YAML properties",
+      "description": "Simplify nested map hierarchies into their simplest dot separated property form, similar to how Spring Boot interprets `application.yml` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/CoalesceProperties.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteKey",
+      "displayName": "Delete key",
+      "description": "Delete a YAML mapping entry key.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/DeleteKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePropertyValue",
+      "displayName": "Change YAML property",
+      "description": "Change a YAML property. Expects dot notation for nested YAML mappings, similar to how Spring Boot interprets `application.yml` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/ChangePropertyValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteProperty",
+      "displayName": "Delete property",
+      "description": "Delete a YAML property. Nested YAML mappings are interpreted as dot separated property names, i.e. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/DeleteProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MergeYaml",
+      "displayName": "Merge YAML snippet",
+      "description": "Merge a YAML snippet with an existing YAML document.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/MergeYaml.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeValue",
+      "displayName": "Change value",
+      "description": "Change a YAML mapping entry value while leaving the key intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/ChangeValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindKey",
+      "displayName": "Find YAML entries",
+      "description": "Find YAML entries that match the specified [JsonPath](https://docs.openrewrite.org/reference/jsonpath-and-jsonpathmatcher-reference) expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/search/FindKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindProperty",
+      "displayName": "Find YAML properties",
+      "description": "Find YAML properties that match the specified `propertyKey`. Expects dot notation for nested YAML mappings, similar to how Spring Boot interprets `application.yml` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/search/FindProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveUnused",
+      "displayName": "Remove unused YAML",
+      "description": "Remove YAML mappings and sequence keys that have no value.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/cleanup/RemoveUnused.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "Indents",
+      "displayName": "YAML indent",
+      "description": "Format tabs and indents in YAML.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-yaml/src/main/java/org/openrewrite/yaml/format/Indents.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "GStringCurlyBraces",
+      "displayName": "Groovy GString curly braces",
+      "description": "In Groovy [GStrings](https://docs.groovy-lang.org/latest/html/api/groovy/lang/GString.html), curly braces are optional for single variable expressions. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-groovy/src/main/java/org/openrewrite/groovy/format/GStringCurlyBraces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "OmitParenthesesForLastArgumentLambda",
+      "displayName": "Move a closure which is the last argument of a method invocation out of parentheses",
+      "description": "Groovy allows a shorthand syntax that allows a closure to be placed outside of parentheses.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-groovy/src/main/java/org/openrewrite/groovy/format/OmitParenthesesForLastArgumentLambda.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutoFormat",
+      "displayName": "Format Groovy code",
+      "description": "Format Groovy code using a standard comprehensive set of Groovy formatting recipes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-groovy/src/main/java/org/openrewrite/groovy/format/AutoFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "OmitParenthesesFormat",
+      "displayName": "Stylize Groovy code to omit parentheses",
+      "description": "Omit parentheses for last argument lambdas in Groovy code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-groovy/src/main/java/org/openrewrite/groovy/format/OmitParenthesesFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceLegacyAttributeIndexSyntax",
+      "displayName": "Replace legacy attribute index syntax",
+      "description": "Replace legacy attribute index syntax (`.0`) with the new syntax (`[0]`).",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/ReplaceLegacyAttributeIndexSyntax.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MoveContentToFile",
+      "displayName": "Move content to another file",
+      "description": "Move content to another HCL file, deleting it in the original file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/MoveContentToFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteContent",
+      "displayName": "Delete content",
+      "description": "Delete HCL content by path.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/DeleteContent.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindAndReplaceLiteral",
+      "displayName": "Find and replace literals in HCL files",
+      "description": "Find and replace literal values in HCL files. This recipe parses the source files on which it runs as HCL, ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/search/FindAndReplaceLiteral.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindContent",
+      "displayName": "Find content",
+      "description": "Find HCL content by path.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/search/FindContent.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveTrailingWhitespace",
+      "displayName": "Remove trailing whitespace",
+      "description": "Remove any extra trailing whitespace from the end of each line.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/format/RemoveTrailingWhitespace.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeFormat",
+      "displayName": "Normalize format",
+      "description": "Move whitespace to the outermost LST element possible.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/format/NormalizeFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "TabsAndIndents",
+      "displayName": "Tabs and indents",
+      "description": "Format tabs and indents in HCL code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/format/TabsAndIndents.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "BlankLines",
+      "displayName": "Blank lines",
+      "description": "Add and/or remove blank lines.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/format/BlankLines.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutoFormat",
+      "displayName": "Format HCL code",
+      "description": "Format HCL code using a standard comprehensive set of HCL formatting recipes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/format/AutoFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "Spaces",
+      "displayName": "Spaces",
+      "description": "Format whitespace in HCL code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-hcl/src/main/java/org/openrewrite/hcl/format/Spaces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ScanningAccumulatedUpgradeRecipe",
+      "displayName": "Accumulation-scanned recipe",
+      "description": "Some recipes hava loop to determine all updates and add them to the scanner. This cycle/recipe only can update for the provided dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/test/java/org/openrewrite/gradle/UpgradeTransitiveDependencyVersionTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradeDependencyInMarker",
+      "displayName": "Upgrade a version within the GradleProject marker",
+      "description": "Upgrade a version within the GradleProject marker. Makes no changes to the source file itself",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/test/java/org/openrewrite/gradle/marker/GradleProjectTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveRedundantDependencyVersions",
+      "displayName": "Remove redundant explicit dependencies and versions",
+      "description": "Remove explicitly-specified dependencies and dependency versions that are managed by a Gradle `platform`/`enforcedPlatform`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/RemoveRedundantDependencyVersions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradeTransitiveDependencyVersion",
+      "displayName": "Upgrade transitive Gradle dependencies",
+      "description": "Upgrades the version of a transitive dependency in a Gradle build file. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/UpgradeTransitiveDependencyVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyClassifier",
+      "displayName": "Change a Gradle dependency classifier",
+      "description": "Changes classifier of an existing dependency declared in `build.gradle` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeDependencyClassifier.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddPlatformDependency",
+      "displayName": "Add Gradle platform dependency",
+      "description": "Add a gradle platform dependency to a `build.gradle` file in the correct configuration based on where it is used.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/AddPlatformDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EnableDevelocityBuildCache",
+      "displayName": "Enable Develocity build cache",
+      "description": "Adds `buildCache` configuration to `develocity` where not yet present.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/EnableDevelocityBuildCache.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveEnableFeaturePreview",
+      "displayName": "Remove an enabled Gradle preview feature",
+      "description": "Remove an enabled Gradle preview feature from `settings.gradle`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/RemoveEnableFeaturePreview.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyUseMapNotation",
+      "displayName": "Use `Map` notation for Gradle dependency declarations",
+      "description": "In Gradle, dependencies can be expressed as a `String` like `\\",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/DependencyUseMapNotation.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyExtension",
+      "displayName": "Change a Gradle dependency extension",
+      "description": "Changes extension of an existing dependency declared in `build.gradle` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeDependencyExtension.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyConfiguration",
+      "displayName": "Change a Gradle dependency configuration",
+      "description": "A common example is the need to change `compile` to `api`/`implementation` as ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeDependencyConfiguration.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeManagedDependency",
+      "displayName": "Change Gradle managed dependency",
+      "description": "Change a Gradle managed dependency coordinates. The `newGroupId` or `newArtifactId` **MUST** be different from before.\\n",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeManagedDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeExtraProperty",
+      "displayName": "Change Extra Property",
+      "description": "Gradle's [ExtraPropertiesExtension](https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html) ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeExtraProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyArtifactId",
+      "displayName": "Change Gradle dependency artifact",
+      "description": "Change the artifact of a specified Gradle dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeDependencyArtifactId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveExtension",
+      "displayName": "Remove build extension by name",
+      "description": "Remove a Gradle build extension from `settings.gradle(.kts)` or `build.gradle(.kts)` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/RemoveExtension.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradeDependencyVersion",
+      "displayName": "Upgrade Gradle dependency versions",
+      "description": "",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/UpgradeDependencyVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependencyGroupId",
+      "displayName": "Change Gradle dependency group",
+      "description": "Change the group of a specified Gradle dependency.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeDependencyGroupId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveRepository",
+      "displayName": "Remove repository",
+      "description": "Removes a repository from Gradle build scripts. Named repositories include \\",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/RemoveRepository.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddDependency",
+      "displayName": "Add Gradle dependency",
+      "description": "Add a gradle dependency to a `build.gradle` file in the correct configuration based on where it is used.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/AddDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyConstraintToRule",
+      "displayName": "Dependency constraint to resolution rule",
+      "description": "Gradle [dependency constraints](https://docs.gradle.org/current/userguide/dependency_constraints.html#dependency-constraints) ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/DependencyConstraintToRule.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeDependency",
+      "displayName": "Change Gradle dependency",
+      "description": "Change a Gradle dependency coordinates. The `newGroupId` or `newArtifactId` **MUST** be different from before.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/ChangeDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddProperty",
+      "displayName": "Add Gradle property",
+      "description": "Add a property to the `gradle.properties` file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/AddProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateGradleWrapper",
+      "displayName": "Update Gradle wrapper",
+      "description": "Update the version of Gradle used in an existing Gradle wrapper. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/UpdateGradleWrapper.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveDependency",
+      "displayName": "Remove a Gradle dependency",
+      "description": "Removes a single dependency from the dependencies section of the `build.gradle`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/RemoveDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateJavaCompatibility",
+      "displayName": "Update Gradle project Java compatibility",
+      "description": "Find and updates the Java compatibility for the Gradle project.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/UpdateJavaCompatibility.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyUseStringNotation",
+      "displayName": "Use `String` notation for Gradle dependency declarations",
+      "description": "In Gradle, dependencies can be expressed as a `String` like `\\",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/DependencyUseStringNotation.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "JacocoReportDeprecations",
+      "displayName": "Replace Gradle 8 introduced deprecations in JaCoCo report task",
+      "description": "Set the `enabled` to `required` and the `destination` to `outputLocation` for Reports deprecations that were removed in gradle 8. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/gradle8/JacocoReportDeprecations.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UseHttpsForRepositories",
+      "displayName": "Use HTTPS for repositories",
+      "description": "Use HTTPS for repository URLs.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/security/UseHttpsForRepositories.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddSettingsPlugin",
+      "displayName": "Add Gradle settings plugin",
+      "description": "Add plugin to Gradle settings file `plugins` block by id.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/AddSettingsPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddBuildPlugin",
+      "displayName": "Add Gradle plugin",
+      "description": "Add a build plugin to a Gradle build file's `plugins` block.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/AddBuildPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveDevelocityConfiguration",
+      "displayName": "Remove Develocity configuration",
+      "description": "Remove Develocity configuration from a Gradle build.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/RemoveDevelocityConfiguration.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MigrateGradleEnterpriseToDevelocity",
+      "displayName": "MigrateGradleEnterpriseToDevelocity",
+      "description": "Migrate from the Gradle Enterprise Gradle plugin to the Develocity Gradle plugin.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/MigrateGradleEnterpriseToDevelocity.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePluginVersion",
+      "displayName": "Change a Gradle plugin version by id",
+      "description": "Change a Gradle plugin by id to a later version.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/ChangePluginVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveSettingsPlugin",
+      "displayName": "Remove Gradle settings plugin",
+      "description": "Remove plugin from Gradle settings file `plugins` block by id.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/RemoveSettingsPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpgradePluginVersion",
+      "displayName": "Update a Gradle plugin by id",
+      "description": "Update a Gradle plugin by id to a later version defined by the plugins DSL. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/UpgradePluginVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddDevelocityGradlePlugin",
+      "displayName": "Add the Develocity Gradle plugin",
+      "description": "Add the Develocity Gradle plugin to settings.gradle files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/AddDevelocityGradlePlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveBuildPlugin",
+      "displayName": "Remove Gradle plugin",
+      "description": "Remove plugin from Gradle `plugins` block by its id. Does not remove plugins from the `buildscript` block.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/RemoveBuildPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePlugin",
+      "displayName": "Change a Gradle plugin",
+      "description": "Changes the selected Gradle plugin to the new plugin.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/ChangePlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddSettingsPluginRepository",
+      "displayName": "Add a Gradle settings repository",
+      "description": "Add a Gradle settings repository to `settings.gradle(.kts)`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/plugins/AddSettingsPluginRepository.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ModuleHasDependency",
+      "displayName": "Module has dependency",
+      "description": "Searches for Gradle Projects (modules) that have a dependency matching the specified id or implementing class. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/ModuleHasDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDependency",
+      "displayName": "Find Gradle dependency",
+      "description": "Finds dependencies declared in gradle build files. See the [reference](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_configurations_graph) on Gradle configurations or the diagram below for a description of what configuration to use. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/FindDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindGradleProject",
+      "displayName": "Find Gradle projects",
+      "description": "Gradle projects are those with `build.gradle` or `build.gradle.kts` files.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/FindGradleProject.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ModuleHasPlugin",
+      "displayName": "Module has plugin",
+      "description": "Searches for Gradle Projects (modules) that have a plugin matching the specified id or implementing class. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/ModuleHasPlugin.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DependencyInsight",
+      "displayName": "Gradle dependency insight",
+      "description": "Find direct and transitive dependencies matching a group, artifact, resolved version, and optionally a configuration name. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/DependencyInsight.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DoesNotIncludeDependency",
+      "displayName": "Does not include Gradle dependency",
+      "description": "A precondition which returns false if visiting a Gradle file which includes the specified dependency in the classpath of some scope. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/DoesNotIncludeDependency.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindRepository",
+      "displayName": "Find Gradle repository",
+      "description": "Find a Gradle repository by url.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/FindRepository.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindPlugins",
+      "displayName": "Find Gradle plugin",
+      "description": "Find a Gradle plugin by id and/or class name. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/FindPlugins.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindGradleWrapper",
+      "displayName": "Find Gradle wrappers",
+      "description": "Find Gradle wrappers.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/FindGradleWrapper.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindJVMTestSuites",
+      "displayName": "Find Gradle JVMTestSuite plugin configuration",
+      "description": "Find Gradle JVMTestSuite plugin configurations and produce a data table.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-gradle/src/main/java/org/openrewrite/gradle/search/FindJVMTestSuites.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RenameTypeAlias",
+      "displayName": "Rename type alias",
+      "description": "Change the name of a given type alias.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/RenameTypeAlias.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindKotlinSources",
+      "displayName": "Find Kotlin sources and collect data metrics",
+      "description": "Use data table to collect source files types and counts of files with extensions `.kt`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/FindKotlinSources.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ImplicitParameterInLambda",
+      "displayName": "`it` shouldn't be used as a lambda parameter name",
+      "description": "`it` is a special identifier that allows you to refer to the current parameter being passed to a ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/ImplicitParameterInLambda.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveTrailingComma",
+      "displayName": "Remove trailing comma in Kotlin",
+      "description": "Remove trailing commas in variable, parameter, and class property lists.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/RemoveTrailingComma.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceCharToIntWithCode",
+      "displayName": "Replace `Char#toInt()` with `Char#code`",
+      "description": "Replace the usage of the deprecated `Char#toInt()` with `Char#code`. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/ReplaceCharToIntWithCode.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveTrailingSemicolon",
+      "displayName": "Remove unnecessary trailing semicolon",
+      "description": "Some Java programmers may mistakenly add semicolons at the end when writing Kotlin code, but in ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/RemoveTrailingSemicolon.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UnnecessaryTypeParentheses",
+      "displayName": "Remove unnecessary parentheses on Kotlin types",
+      "description": "In Kotlin, it's possible to add redundant nested parentheses in type definitions. This recipe is designed to remove those unnecessary parentheses.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/UnnecessaryTypeParentheses.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveLambdaArgumentParentheses",
+      "displayName": "Remove method invocation parentheses around single lambda argument",
+      "description": "For example, convert `1.let({ it + 1 })` to `1.let { it + 1 }`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/RemoveLambdaArgumentParentheses.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EqualsMethodUsage",
+      "displayName": "Structural equality tests should use `==` or `!=`",
+      "description": "In Kotlin, `==` means structural equality and `!=` structural inequality and both map to the left-side ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/cleanup/EqualsMethodUsage.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutoFormat",
+      "displayName": "Format Kotlin code",
+      "description": "Format Kotlin code using a standard comprehensive set of Kotlin formatting recipes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-kotlin/src/main/java/org/openrewrite/kotlin/format/AutoFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "TestRecipe",
+      "displayName": "Test recipe",
+      "description": "Test recipe.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-test/src/test/java/org/openrewrite/test/RecipePrinterTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ScannerEdit",
+      "displayName": "Attempts mutation during getScanner()",
+      "description": "Any changes attempted by a visitor returned from getScanner() should be an error during test execution.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-test/src/test/java/org/openrewrite/test/internal/RewriteTestTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeNoParameters",
+      "displayName": "Recipe with no parameters",
+      "description": "A recipe with no parameters, used in EnvironmentTest",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-test/src/test/java/org/openrewrite/config/RecipeNoParameters.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeAcceptingParameters",
+      "displayName": "Recipe accepting parameters",
+      "description": "A recipe with parameters, used in EnvironmentTest",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-test/src/test/java/org/openrewrite/config/RecipeAcceptingParameters.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AdHocRecipe",
+      "displayName": "AdHocRecipe",
+      "description": "An ad hoc recipe used in RewriteTest.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-test/src/main/java/org/openrewrite/test/AdHocRecipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AdHocScanningRecipe",
+      "displayName": "AdHocScanningRecipe",
+      "description": "An ad hoc recipe used in RewriteTest.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-test/src/main/java/org/openrewrite/test/AdHocScanningRecipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddPropertyComment",
+      "displayName": "Add comment before property key",
+      "description": "Add a new comment before a property key if not already present, optionally commenting out the property.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/AddPropertyComment.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePropertyKey",
+      "displayName": "Change property key",
+      "description": "Change a property key leaving the value intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/ChangePropertyKey.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CreatePropertiesFile",
+      "displayName": "Create Properties file",
+      "description": "Create a new Properties file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/CreatePropertiesFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddProperty",
+      "displayName": "Add a new property",
+      "description": "Adds a new property to a property file. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/AddProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePropertyValue",
+      "displayName": "Change property value",
+      "description": "Change a property value leaving the key intact.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/ChangePropertyValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteProperty",
+      "displayName": "Delete property by key",
+      "description": "Deletes key/value pairs from properties files, as well as any comments that immediately precede the key/value pair. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/DeleteProperty.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindProperties",
+      "displayName": "Find property",
+      "description": "Finds occurrences of a property key.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-properties/src/main/java/org/openrewrite/properties/search/FindProperties.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "BoomRecipe",
+      "displayName": "We go boom",
+      "description": "Test recipe.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeSchedulerTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeBase",
+      "displayName": "Recipe base",
+      "description": "Recipe base.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeBasicsTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FormalHello",
+      "displayName": "Formal hello",
+      "description": "Be formal. Be cool.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeListTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DelegatingRecipe",
+      "displayName": "Test delegate recipe",
+      "description": "Test onComplete with delegate recipe.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeRunTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CustomEstimatedEffortAppendToTextRecipe",
+      "displayName": "CustomEstimatedEffortRecipe",
+      "description": "NoArgRecipe.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeEstimatedEffortTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ErrorDuringScanningPhase",
+      "displayName": "Throw exception",
+      "description": "Throws an exception in the scanning phase.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeLifecycleTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "JSpecifyAnnotatedRecipeOptions",
+      "displayName": "Validate nullable JSpecify annotations",
+      "description": "NullUtils should see these annotations.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeValidationTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeWithEstimatedEffortPerOccurrence",
+      "displayName": "Recipe with estimatedEffortPerOccurrence",
+      "description": "A fancy description.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/RecipeSerializerTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeWithBadStaticInitializer",
+      "displayName": "RecipeWithBadStaticInitializer",
+      "description": "",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/config/YamlResourceLoaderTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MaxCycles",
+      "displayName": "Executes recipes multiple times",
+      "description": "Executes recipes multiple times.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/config/DeclarativeRecipeTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeWithApplicabilityTest",
+      "displayName": "Recipe with an applicability test",
+      "description": "This recipe is a test utility which exists to exercise RecipeRunStats.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/table/RecipeRunStatsTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeWithRecipeList",
+      "displayName": "A recipe that has a recipe list",
+      "description": "To verify that it is possible for a recipe list to be called over RPC.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/test/java/org/openrewrite/rpc/RewriteRpcTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindGitProvenance",
+      "displayName": "Show Git source control metadata",
+      "description": "List out the contents of each unique `GitProvenance` marker in the set of source files. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindGitProvenance.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindLstProvenance",
+      "displayName": "Find LST provenance",
+      "description": "Produces a data table showing what versions of OpenRewrite/Moderne tooling was used to produce a given LST.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindLstProvenance.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteSourceFiles",
+      "displayName": "Delete files",
+      "description": "Delete files by source path.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/DeleteSourceFiles.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindCollidingSourceFiles",
+      "displayName": "Find colliding source files",
+      "description": "Finds source files which share a path with another source file. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindCollidingSourceFiles.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MoveFile",
+      "displayName": "Move a file",
+      "description": "Move a file to a different directory. The file name will remain the same.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/MoveFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ExcludeFileFromGitignore",
+      "displayName": "Remove ignoral of files or directories from .gitignore",
+      "description": "This recipe will remove a file or directory from the .gitignore file. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/ExcludeFileFromGitignore.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "SetFilePermissions",
+      "displayName": "Set file permission attributes",
+      "description": "Set a file's read, write and executable permission attributes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/SetFilePermissions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ListRuntimeClasspath",
+      "displayName": "List runtime classpath",
+      "description": "A diagnostic utility which emits the runtime classpath to a data table.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/ListRuntimeClasspath.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "Noop",
+      "displayName": "Do nothing",
+      "description": "Default no-op test, does nothing.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/Recipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddToGitignore",
+      "displayName": "Add entries to `.gitignore`",
+      "description": "Adds entries to the project's `.gitignore` file. If no `.gitignore` file exists, one will be created. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/AddToGitignore.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindParseFailures",
+      "displayName": "Find source files with `ParseExceptionResult` markers",
+      "description": "This recipe explores parse failures after an LST is produced for classifying the types of ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindParseFailures.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RenameFile",
+      "displayName": "Rename a file",
+      "description": "Rename a file while keeping it in the same directory.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/RenameFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "IsInRepository",
+      "displayName": "Is in repository",
+      "description": "A search recipe which marks files that are in a repository with one of the supplied names. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/IsInRepository.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDeserializationErrors",
+      "displayName": "Find deserialization errors",
+      "description": "Produces a data table collecting all deserialization errors of serialized LSTs.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindDeserializationErrors.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindSourceFiles",
+      "displayName": "Find files",
+      "description": "Find files by source path. Paths are always interpreted as relative to the repository root.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindSourceFiles.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindQuarks",
+      "displayName": "Find instances of type `Quark`",
+      "description": "`Quark` source files are pointers to the existence of a file without capturing any of the contents of the file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/FindQuarks.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CompositeRecipe",
+      "displayName": "CompositeRecipe",
+      "description": "A recipe that consists of a list of other recipes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/config/CompositeRecipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeclarativeRecipe",
+      "displayName": "Precondition bellwether",
+      "description": "Evaluates a precondition and makes that result available to the preconditions of other recipes. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/config/DeclarativeRecipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindCommitters",
+      "displayName": "Find committers on repositories",
+      "description": "List the committers on a repository.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/search/FindCommitters.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindBuildMetadata",
+      "displayName": "Find build metadata",
+      "description": "Find source files with matching build metadata.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/search/FindBuildMetadata.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindParseToPrintInequality",
+      "displayName": "Find parse to print inequality",
+      "description": "OpenRewrite `Parser` implementations should produce `SourceFile` objects whose `printAll()` ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/search/FindParseToPrintInequality.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RepositoryContainsFile",
+      "displayName": "Repository contains file",
+      "description": "Intended to be used primarily as a precondition for other recipes, this recipe checks if a repository ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/search/RepositoryContainsFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EndOfLineAtEndOfFile",
+      "displayName": "End of Line @ End of File (EOL @ EOF)",
+      "description": "Ensure that the file ends with the newline character.\\n\\n",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/EndOfLineAtEndOfFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeText",
+      "displayName": "Change text",
+      "description": "Completely replaces the contents of the text file with other text. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/ChangeText.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CreateTextFile",
+      "displayName": "Create text file",
+      "description": "Creates a new plain text file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/CreateTextFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AppendToTextFile",
+      "displayName": "Append to text file",
+      "description": "Appends or replaces content of an existing plain text file, or creates a new one if it doesn't already exist. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/AppendToTextFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "Find",
+      "displayName": "Find text",
+      "description": "Textual search, optionally using Regular Expression (regex) to query.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/Find.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindAndReplace",
+      "displayName": "Find and replace",
+      "description": "Textual find and replace, optionally interpreting the search query as a Regular Expression (regex). ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/FindAndReplace.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindMultiselect",
+      "displayName": "Experimental find text with multiselect",
+      "description": "Search for text, treating all textual sources as plain text. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/text/FindMultiselect.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RpcRecipe",
+      "displayName": "RpcRecipe",
+      "description": "",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-core/src/main/java/org/openrewrite/rpc/RpcRecipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveTrailingWhitespace",
+      "displayName": "Remove trailing whitespace",
+      "description": "Remove any extra trailing whitespace from the end of each line.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/RemoveTrailingWhitespace.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeTagValue",
+      "displayName": "Change XML tag value",
+      "description": "Alters the value of XML tags matching the provided expression. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/ChangeTagValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "XsltTransformation",
+      "displayName": "XSLT transformation",
+      "description": "Apply the specified XSLT transformation on matching files. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/XsltTransformation.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddOrUpdateChildTag",
+      "displayName": "Add or update child tag",
+      "description": "Adds or updates a child element below the parent(s) matching the provided `parentXPath` expression. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/AddOrUpdateChildTag.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeNamespaceValue",
+      "displayName": "Change XML attribute of a specific resource version",
+      "description": "Alters XML Attribute value within specified element of a specific resource versions.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/ChangeNamespaceValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveEmptyXmlTags",
+      "displayName": "Remove empty XML Tag",
+      "description": "Removes XML tags that do not have attributes or children, including self closing tags.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/RemoveEmptyXmlTags.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddTagAttribute",
+      "displayName": "Add new XML attribute for an Element",
+      "description": "Add new XML attribute with value on a specified element.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/AddTagAttribute.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeTagAttribute",
+      "displayName": "Change XML attribute",
+      "description": "Alters XML attribute value on a specified element.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/ChangeTagAttribute.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CreateXmlFile",
+      "displayName": "Create XML file",
+      "description": "Create a new XML file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/CreateXmlFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveXmlTag",
+      "displayName": "Remove XML tag",
+      "description": "Removes XML tags matching the provided expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/RemoveXmlTag.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeTagName",
+      "displayName": "Change XML tag name",
+      "description": "Alters the name of XML tags matching the provided expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/ChangeTagName.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddCommentToXmlTag",
+      "displayName": "Add a comment to an XML tag",
+      "description": "Adds a comment as the first element in an XML tag.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/AddCommentToXmlTag.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddOwaspDateBoundSuppressions",
+      "displayName": "Add date bounds to OWASP suppressions",
+      "description": "Adds an expiration date to all OWASP suppressions in order to ensure that they are periodically reviewed. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/security/AddOwaspDateBoundSuppressions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateOwaspSuppressionDate",
+      "displayName": "Update OWASP suppression date bounds",
+      "description": "Updates the expiration date for OWASP suppressions having a matching cve tag. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/security/UpdateOwaspSuppressionDate.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveOwaspSuppressions",
+      "displayName": "Remove out-of-date OWASP suppressions",
+      "description": "Remove all OWASP suppressions with a suppression end date in the past, as these are no longer valid. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/security/RemoveOwaspSuppressions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "IsOwaspSuppressionsFile",
+      "displayName": "Find OWASP vulnerability suppression XML files",
+      "description": "These files are used to suppress false positives in OWASP [Dependency Check](https://jeremylong.github.io/DependencyCheck).",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/security/IsOwaspSuppressionsFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutodetectDebug",
+      "displayName": "XML style Auto-detection debug",
+      "description": "Runs XML Autodetect and records the results in data tables and search markers. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/style/AutodetectDebug.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindNamespacePrefix",
+      "displayName": "Find XML namespace prefixes",
+      "description": "Find XML namespace prefixes, optionally restricting the search by a XPath expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/search/FindNamespacePrefix.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "HasNamespaceUri",
+      "displayName": "Find XML namespace URIs",
+      "description": "Find XML namespace URIs, optionally restricting the search by a XPath expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/search/HasNamespaceUri.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DoesNotUseNamespaceUri",
+      "displayName": "Find files without Namespace URI",
+      "description": "Find XML root elements that do not have a specific Namespace URI, optionally restricting the search by an XPath expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/search/DoesNotUseNamespaceUri.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindTags",
+      "displayName": "Find XML tags",
+      "description": "Find XML tags by XPath expression.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/search/FindTags.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeLineBreaks",
+      "displayName": "Normalize line breaks",
+      "description": "Consistently use either Windows style (CRLF) or Linux style (LF) line breaks. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/format/NormalizeLineBreaks.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeFormat",
+      "displayName": "Normalize format",
+      "description": "Move whitespace to the outermost LST element possible.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/format/NormalizeFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "LineBreaks",
+      "displayName": "Blank lines",
+      "description": "Add line breaks at appropriate places between XML syntax elements.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/format/LineBreaks.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeTabsOrSpaces",
+      "displayName": "Normalize to tabs or spaces",
+      "description": "Consistently use either tabs or spaces in indentation.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/format/NormalizeTabsOrSpaces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "TabsAndIndents",
+      "displayName": "Tabs and indents",
+      "description": "Format tabs and indents in XML code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/format/TabsAndIndents.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutoFormat",
+      "displayName": "Format XML",
+      "description": "Indents XML using the most common indentation size and tabs or space choice in use in the file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-xml/src/main/java/org/openrewrite/xml/format/AutoFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RandomizeId",
+      "displayName": "Randomize tree IDs",
+      "description": "Scramble the IDs. This was intended as a utility to test _en masse_ ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RandomizeId.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveMethodInvocations",
+      "displayName": "Remove method invocations",
+      "description": "Remove method invocations if syntactically safe.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RemoveMethodInvocations.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "OrderImports",
+      "displayName": "Order imports",
+      "description": "Groups and orders import statements. If a [style has been defined](https://docs.openrewrite.org/concepts-and-explanations/styles), this recipe will order the imports ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/OrderImports.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeTypeInStringLiteral",
+      "displayName": "Change type in String literals",
+      "description": "Change a given type to another when used in a String literal.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeTypeInStringLiteral.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeType",
+      "displayName": "Change type",
+      "description": "Change a given type to another.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeType.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddMethodParameter",
+      "displayName": "Add method parameter to a method declaration",
+      "description": "Adds a new method parameter to an existing method declaration.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddMethodParameter.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceMethodInvocationWithConstant",
+      "displayName": "Replace method invocation with constant",
+      "description": "Replace all method invocations matching the method pattern with the specified constant.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReplaceMethodInvocationWithConstant.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveUnusedImports",
+      "displayName": "Remove unused imports",
+      "description": "Remove imports for types that are not referenced. As a precaution against incorrect changes no imports ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RemoveUnusedImports.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeMethodAccessLevel",
+      "displayName": "Change method access level",
+      "description": "Change the access level (public, protected, private, package private) of a method.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeMethodAccessLevel.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "InlineMethodCalls",
+      "displayName": "Inline methods annotated with `@InlineMe`",
+      "description": "Apply inlinings as defined by Error Prone's [`@InlineMe` annotation](https://errorprone.info/docs/inlineme), ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/InlineMethodCalls.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddLiteralMethodArgument",
+      "displayName": "Add a literal method argument",
+      "description": "Add a literal `String` or `int` argument to method invocations.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddLiteralMethodArgument.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "CreateEmptyJavaClass",
+      "displayName": "Create Java class",
+      "description": "Create a new, empty Java class.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/CreateEmptyJavaClass.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceStringLiteralValue",
+      "displayName": "Replace `String` literal",
+      "description": "Replace the value of a complete `String` literal.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReplaceStringLiteralValue.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeMethodTargetToVariable",
+      "displayName": "Change method target to variable",
+      "description": "Change method invocations to method calls on a variable.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeMethodTargetToVariable.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceConstantWithAnotherConstant",
+      "displayName": "Replace constant with another constant",
+      "description": "Replace a constant with another constant, adding/removing import on class if needed.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReplaceConstantWithAnotherConstant.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveObjectsIsNull",
+      "displayName": "Transform calls to `Objects.isNull(..)` and `Objects.nonNull(..)`",
+      "description": "Replace calls to `Objects.isNull(..)` and `Objects.nonNull(..)` with a simple null check. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RemoveObjectsIsNull.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReorderMethodArguments",
+      "displayName": "Reorder method arguments",
+      "description": "Reorder method arguments into the specified order.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReorderMethodArguments.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "SimplifyMethodChain",
+      "displayName": "Simplify a call chain",
+      "description": "Simplify `a.b().c()` to `a.d()`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/SimplifyMethodChain.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeStaticFieldToMethod",
+      "displayName": "Change static field access to static method access",
+      "description": "Migrate accesses to a static field to invocations of a static method.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeStaticFieldToMethod.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddCommentToMethodInvocations",
+      "displayName": "Add comment to method invocations",
+      "description": "Add a comment to method invocations in a Java source file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddCommentToMethodInvocations.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddCommentToImport",
+      "displayName": "Add comment to import statement",
+      "description": "Add a comment to an import statement in a Java source file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddCommentToImport.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DeleteMethodArgument",
+      "displayName": "Delete method argument",
+      "description": "Delete an argument from method invocations.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/DeleteMethodArgument.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveImplements",
+      "displayName": "Remove interface implementations",
+      "description": "Removes `implements` clauses from classes implementing the specified interface. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RemoveImplements.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ShortenFullyQualifiedTypeReferences",
+      "displayName": "Add imports for fully qualified references to types",
+      "description": "Any fully qualified references to Java types will be replaced with corresponding simple ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ShortenFullyQualifiedTypeReferences.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceConstant",
+      "displayName": "Replace constant with literal value",
+      "description": "Replace a named constant with a literal value when you wish to remove the old constant. A `String` literal must include escaped quotes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReplaceConstant.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeMethodInvocationReturnType",
+      "displayName": "Change method invocation return type",
+      "description": "Changes the return type of a method invocation.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeMethodInvocationReturnType.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePackage",
+      "displayName": "Rename package name",
+      "description": "A recipe that will rename a package name in package statements, imports, and fully-qualified types.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangePackage.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NoStaticImport",
+      "displayName": "Remove static import",
+      "description": "Removes static imports and replaces them with qualified references. For example, `emptyList()` becomes `Collections.emptyList()`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/NoStaticImport.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeAnnotationAttributeName",
+      "displayName": "Change annotation attribute name",
+      "description": "Some annotations accept arguments. This recipe renames an existing attribute.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeAnnotationAttributeName.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddNullMethodArgument",
+      "displayName": "Add a `null` method argument",
+      "description": "Add a `null` argument to method invocations.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddNullMethodArgument.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddLicenseHeader",
+      "displayName": "Add license header",
+      "description": "Adds license headers to Java source files when missing. Does not override existing license headers.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddLicenseHeader.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UseStaticImport",
+      "displayName": "Use static import",
+      "description": "Removes unnecessary receiver types from static method invocations. For example, `Collections.emptyList()` becomes `emptyList()`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/UseStaticImport.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "SimplifySingleElementAnnotation",
+      "displayName": "Simplify single-element annotation",
+      "description": "This recipe will remove the attribute `value` on single-element annotations. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/SimplifySingleElementAnnotation.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RecipeMarkupDemonstration",
+      "displayName": "Demonstrate rendering of `Markup` markers",
+      "description": "Tooling may decide to elide or display differently markup of different levels.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RecipeMarkupDemonstration.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceStringLiteralWithConstant",
+      "displayName": "Replace String literal with constant",
+      "description": "Replace String literal with constant, adding import on class if needed.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReplaceStringLiteralWithConstant.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveAnnotationAttribute",
+      "displayName": "Remove annotation attribute",
+      "description": "Some annotations accept arguments. This recipe removes an existing attribute.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RemoveAnnotationAttribute.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeMethodName",
+      "displayName": "Change method name",
+      "description": "Rename a method.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeMethodName.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "UpdateSourcePositions",
+      "displayName": "Update source positions",
+      "description": "Calculate start position and length for every LST element.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/UpdateSourcePositions.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveAnnotation",
+      "displayName": "Remove annotation",
+      "description": "Remove matching annotations wherever they occur.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/RemoveAnnotation.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangePackageInStringLiteral",
+      "displayName": "Rename package name in String literals",
+      "description": "A recipe that will rename a package name in String literals.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangePackageInStringLiteral.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ChangeMethodTargetToStatic",
+      "displayName": "Change method target to static",
+      "description": "Change method invocations to static method calls.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ChangeMethodTargetToStatic.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddCommentToMethod",
+      "displayName": "Add comment to method declarations",
+      "description": "Add a comment to method declarations in a Java source file.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddCommentToMethod.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ReplaceAnnotation",
+      "displayName": "Replace annotation",
+      "description": "Replace an Annotation with another one if the annotation pattern matches. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ReplaceAnnotation.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AddOrUpdateAnnotationAttribute",
+      "displayName": "Add or update annotation attribute",
+      "description": "Some annotations accept arguments. This recipe sets an existing argument to the specified value, ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/AddOrUpdateAnnotationAttribute.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindEmptyClasses",
+      "displayName": "Find empty classes",
+      "description": "Find empty classes without annotations that do not implement an interface or extend a class.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindEmptyClasses.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindClassHierarchy",
+      "displayName": "Find class hierarchy",
+      "description": "Discovers all class declarations within a project, recording which files they appear in, their superclasses, and interfaces. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindClassHierarchy.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "HasJavaVersion",
+      "displayName": "Find files compiled at a specific Java version",
+      "description": "Finds Java source files matching a particular language level. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/HasJavaVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDeprecatedMethods",
+      "displayName": "Find uses of deprecated methods",
+      "description": "Find uses of deprecated methods in any API.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindDeprecatedMethods.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "HasBuildToolVersion",
+      "displayName": "Find files with a particular build tool version",
+      "description": "Finds Java source files built with a particular build tool. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/HasBuildToolVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindTypeMappings",
+      "displayName": "Find type mappings",
+      "description": "Study the frequency of `J` types and their `JavaType` type attribution.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindTypeMappings.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ClasspathTypeCounts",
+      "displayName": "Study the size of the classpath by source set",
+      "description": "Emit one data table row per source set in a project, with the number of types in the source set.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/ClasspathTypeCounts.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "DoesNotUseType",
+      "displayName": "Check whether a type is **not** in use",
+      "description": "Useful as a precondition to skip over compilation units using the argument type.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/DoesNotUseType.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindImplementations",
+      "displayName": "Find implementing classes",
+      "description": "Find class declarations which implement the specified type. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindImplementations.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindComments",
+      "displayName": "Find within comments and literals",
+      "description": "Find regular expression matches within comments and literals. \\",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindComments.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "HasSourceSet",
+      "displayName": "Find files in a source set",
+      "description": "Source sets are a way to organize your source code into logical groups. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/HasSourceSet.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "IsLikelyNotTest",
+      "displayName": "Find files that are likely not tests",
+      "description": "Sources that do not contain indicators of being, or being exclusively for the use in tests. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/IsLikelyNotTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindTypes",
+      "displayName": "Find types",
+      "description": "Find type references by name.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindTypes.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "HasMinimumJavaVersion",
+      "displayName": "Find the oldest Java version in use",
+      "description": "The oldest Java version in use is the lowest Java ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/HasMinimumJavaVersion.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindLiterals",
+      "displayName": "Find literals",
+      "description": "Find literals matching a pattern.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindLiterals.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindImports",
+      "displayName": "Find source files with imports",
+      "description": "Locates source files that have imports matching the given type pattern, regardless of whether ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindImports.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ResultOfMethodCallIgnored",
+      "displayName": "Result of method call ignored",
+      "description": "Find locations where the result of the method call is being ignored.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/ResultOfMethodCallIgnored.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "IsLikelyTest",
+      "displayName": "Find sources that are likely tests",
+      "description": "Sources that contain indicators of being, or being exclusively for the use in tests. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/IsLikelyTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindFieldsOfType",
+      "displayName": "Find fields of type",
+      "description": "Finds declared fields matching a particular class name.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindFieldsOfType.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindMethodDeclaration",
+      "displayName": "Find method declaration",
+      "description": "Locates the declaration of a method.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindMethodDeclaration.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDeprecatedUses",
+      "displayName": "Find uses of deprecated classes, methods, and fields",
+      "description": "Find deprecated uses of methods, fields, and types. Optionally ignore those classes that are inside deprecated scopes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindDeprecatedUses.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindAnnotations",
+      "displayName": "Find annotations",
+      "description": "Find all annotations matching the annotation pattern.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindAnnotations.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDeprecatedClasses",
+      "displayName": "Find uses of deprecated classes",
+      "description": "Find uses of deprecated classes, optionally ignoring those classes that are inside deprecated scopes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindDeprecatedClasses.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindDeprecatedFields",
+      "displayName": "Find uses of deprecated fields",
+      "description": "Find uses of deprecated fields in any API.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindDeprecatedFields.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindMethods",
+      "displayName": "Find method usages",
+      "description": "Find method calls by pattern.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindMethods.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindEmptyMethods",
+      "displayName": "Find methods with empty bodies",
+      "description": "Find methods with empty bodies and single public no arg constructors.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindEmptyMethods.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindMissingTypes",
+      "displayName": "Find missing type information on Java LSTs",
+      "description": "This is a diagnostic recipe to highlight where LSTs are missing type attribution information.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindMissingTypes.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindRepeatableAnnotations",
+      "displayName": "Find uses of `@Repeatable` annotations",
+      "description": "Java 8 introduced the concept of `@Repeatable` annotations.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindRepeatableAnnotations.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindCompileErrors",
+      "displayName": "Find compile errors",
+      "description": "Compile errors result in a particular LST structure that can be searched for.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindCompileErrors.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FindFields",
+      "displayName": "Find fields",
+      "description": "Find uses of a field.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/search/FindFields.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MethodDefinitionLength",
+      "displayName": "Calculate token length of method definitions",
+      "description": "Locates method definitions and predicts the number of token in each.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ai/MethodDefinitionLength.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ClassDefinitionLength",
+      "displayName": "Calculate token length of classes",
+      "description": "Locates class definitions and predicts the number of token in each.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/ai/ClassDefinitionLength.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "RemoveTrailingWhitespace",
+      "displayName": "Remove trailing whitespace",
+      "description": "Remove any extra trailing whitespace from the end of each line.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/RemoveTrailingWhitespace.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeLineBreaks",
+      "displayName": "Normalize line breaks",
+      "description": "Consistently use either Windows style (CRLF) or Linux style (LF) line breaks. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/NormalizeLineBreaks.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeFormat",
+      "displayName": "Normalize format",
+      "description": "Move whitespace to the outermost LST element possible.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/NormalizeFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "WrappingAndBraces",
+      "displayName": "Wrapping and braces",
+      "description": "Format line wraps and braces in Java code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/WrappingAndBraces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "TypecastParenPad",
+      "displayName": "Typecast parentheses padding",
+      "description": "Fixes whitespace padding between a typecast type identifier and the enclosing left and right parenthesis. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/TypecastParenPad.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "PadEmptyForLoopComponents",
+      "displayName": "Pad empty `for` loop components",
+      "description": "Fixes padding on empty `for` loop iterators and initializers to match Checkstyle policies.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/PadEmptyForLoopComponents.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NormalizeTabsOrSpaces",
+      "displayName": "Normalize to tabs or spaces",
+      "description": "Consistently use either tabs or spaces in indentation.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/NormalizeTabsOrSpaces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "TabsAndIndents",
+      "displayName": "Tabs and indents",
+      "description": "Format tabs and indents in Java code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/TabsAndIndents.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "BlankLines",
+      "displayName": "Blank lines",
+      "description": "Add and/or remove blank lines.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/BlankLines.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "AutoFormat",
+      "displayName": "Format Java code",
+      "description": "Format Java code using a standard comprehensive set of Java formatting recipes.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/AutoFormat.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "SingleLineComments",
+      "displayName": "Single line comments begin with a whitespace",
+      "description": "Write `// hi` instead of `//hi`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/SingleLineComments.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MethodParamPad",
+      "displayName": "Method parameter padding",
+      "description": "Fixes whitespace padding between the identifier of a method definition or method invocation and the left parenthesis of the parameter list. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/MethodParamPad.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NoWhitespaceBefore",
+      "displayName": "No whitespace before",
+      "description": "Removes unnecessary whitespace preceding a token. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/NoWhitespaceBefore.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "NoWhitespaceAfter",
+      "displayName": "No whitespace after",
+      "description": "Removes unnecessary whitespace appearing after a token. ",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/NoWhitespaceAfter.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "EmptyNewlineAtEndOfFile",
+      "displayName": "End files with a single newline",
+      "description": "Some tools work better when files end with an empty line.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/EmptyNewlineAtEndOfFile.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "Spaces",
+      "displayName": "Spaces",
+      "description": "Format whitespace in Java code.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java/src/main/java/org/openrewrite/java/format/Spaces.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "VerifyCursorWellFormedRecipe",
+      "displayName": "Verify cursor well-formed",
+      "description": "This recipe verifies that the cursor is well-formed.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java-test/src/test/java/org/openrewrite/RepeatTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "MixedConstructorRecipe",
+      "displayName": "Mixed constructor",
+      "description": "A recipe with more than one constructor, with one marked as the primary.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java-test/src/test/java/org/openrewrite/java/MixedConstructorRecipe.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "ExtractTestInterface",
+      "displayName": "Extract interface",
+      "description": "Extract to an interface named `ITest`.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java-test/src/test/java/org/openrewrite/java/ExtractInterfaceTest.java",
+      "recipeType": "Java"
+    },
+    {
+      "className": "FinalizeLocalVariables",
+      "displayName": "Finalize local variables",
+      "description": "Adds the `final` modifier keyword to local variables which are not reassigned.",
+      "filePath": "/Users/manethninduwara/Developer/openRewrite/rewrite/rewrite-java-test/src/test/java/org/openrewrite/java/FinalizeLocalVariablesTest.java",
+      "recipeType": "Java"
+    }
+  ]
+}
