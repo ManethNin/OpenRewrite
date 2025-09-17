@@ -1,0 +1,726 @@
+Recipe name,Recipe description,Recipe type,Recipe source code,Recipe options
+The name of the recipe.,The description of the recipe.,"Differentiate between Java and YAML recipes, as they may be two independent data sets used in LLM fine-tuning.",The full source code of the recipe.,JSON format of recipe options.
+Find call graph,Produces a data table where each row represents a method call.,Java,"/*
+ * Copyright 2023 the original author or authors.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the ""License"");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an ""AS IS"" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.openrewrite;
+
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import org.openrewrite.java.JavaIsoVisitor;
+import org.openrewrite.java.tree.J;
+import org.openrewrite.java.tree.JavaType;
+import org.openrewrite.marker.Markup;
+import org.openrewrite.marker.SourceSet;
+import org.openrewrite.table.CallGraph;
+
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.StringJoiner;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import static java.util.Objects.requireNonNull;
+
+@EqualsAndHashCode(callSuper = false)
+@Value
+public class FindCallGraph extends Recipe {
+    transient CallGraph callGraph = new CallGraph(this);
+
+    @Override
+    public String getDisplayName() {
+        return ""Find call graph"";
+    }
+
+    @Override
+    public String getDescription() {
+        return ""Produces a data table where each row represents a method call."";
+    }
+
+    @Option(displayName = ""Include standard library"",
+            description = ""When enabled calls to methods in packages beginning with \""java\"", \""groovy\"", and \""kotlin\"" "" +
+                          ""will be included in the report. "" +
+                          ""By default these are omitted."",
+            required = false)
+    boolean includeStdLib;
+
+    @Override
+    public TreeVisitor<?, ExecutionContext> getVisitor() {
+        return new JavaIsoVisitor<ExecutionContext>() {
+
+            @Override
+            public J.ClassDeclaration visitClassDeclaration(J.ClassDeclaration classDecl, ExecutionContext ctx) {
+                if (classDecl.getType() == null) {
+                    return Markup.warn(classDecl, new IllegalStateException(""Class declaration is missing type attribution""));
+                }
+                return super.visitClassDeclaration(classDecl, ctx);
+            }
+
+            @Override
+            public J.NewClass visitNewClass(J.NewClass newClass, ExecutionContext ctx) {
+                return super.visitNewClass(recordCall(newClass, ctx), ctx);
+            }
+
+            @Override
+            public J.MethodInvocation visitMethodInvocation(J.MethodInvocation method, ExecutionContext ctx) {
+                return super.visitMethodInvocation(recordCall(method, ctx), ctx);
+            }
+
+            @Override
+            public J.MemberReference visitMemberReference(J.MemberReference memberRef, ExecutionContext ctx) {
+                return super.visitMemberReference(recordCall(memberRef, ctx), ctx);
+            }
+
+            private <T extends J> T recordCall(T j, ExecutionContext ctx) {
+                JavaType.Method method = null;
+                if (j instanceof J.MethodInvocation) {
+                    method = ((J.MethodInvocation) j).getMethodType();
+                } else if (j instanceof J.NewClass) {
+                    method = ((J.NewClass) j).getMethodType();
+                } else if (j instanceof J.MemberReference) {
+                    method = ((J.MemberReference) j).getMethodType();
+                }
+                if (method == null) {
+                    return Markup.warn(j, new IllegalStateException(""Method type not found""));
+                }
+                String fqn = method.getDeclaringType().getFullyQualifiedName();
+                if (!includeStdLib && (fqn.startsWith(""java."") || fqn.startsWith(""groovy."") || fqn.startsWith(""kotlin.""))) {
+                    return j;
+                }
+                Cursor scope = getCursor().dropParentUntil(it -> it instanceof J.MethodDeclaration || it instanceof J.ClassDeclaration || it instanceof SourceFile);
+                String sourceSet = Optional.ofNullable(scope.firstEnclosing(SourceFile.class))
+                        .map(Tree::getMarkers)
+                        .flatMap(m -> m.findFirst(SourceSet.class))
+                        .map(SourceSet::getName)
+                        .orElse(""unknown"");
+                if (scope.getValue() instanceof J.ClassDeclaration) {
+                    boolean isInStaticInitializer = inStaticInitializer();
+                    if ((isInStaticInitializer && scope.computeMessageIfAbsent(""METHODS_CALLED_IN_STATIC_INITIALIZATION"", k -> new HashSet<>()).add(method)) ||
+                        (!isInStaticInitializer && scope.computeMessageIfAbsent(""METHODS_CALLED_IN_INSTANCE_INITIALIZATION"", k -> new HashSet<>()).add(method))) {
+                        callGraph.insertRow(ctx, row(sourceSet, requireNonNull(((J.ClassDeclaration) scope.getValue()).getType()).getFullyQualifiedName(), method));
+                    }
+                } else if (scope.getValue() instanceof J.MethodDeclaration) {
+                    Set<JavaType.Method> methodsCalledInScope = scope.computeMessageIfAbsent(""METHODS_CALLED_IN_SCOPE"", k -> new HashSet<>());
+                    if (methodsCalledInScope.add(method)) {
+                        callGraph.insertRow(ctx, row(sourceSet,requireNonNull(((J.MethodDeclaration) scope.getValue()).getMethodType()), method));
+                    }
+                } else if (scope.getValue() instanceof SourceFile) {
+                    // In Java there has to be a class declaration, but that isn't the case in Groovy/Kotlin/etc.
+                    // So we'll just use the source file path instead
+                    Set<JavaType.Method> methodsCalledInScope = scope.computeMessageIfAbsent(""METHODS_CALLED_IN_SCOPE"", k -> new HashSet<>());
+                    if (methodsCalledInScope.add(method)) {
+                        callGraph.insertRow(ctx, row(sourceSet, ((SourceFile) scope.getValue()).getSourcePath().toString(), method));
+                    }
+                }
+                return j;
+            }
+
+            private boolean inStaticInitializer() {
+                AtomicBoolean inStaticInitializer = new AtomicBoolean();
+                getCursor().dropParentUntil(it -> {
+                    if (it instanceof SourceFile) {
+                        return true;
+                    }
+                    if (it instanceof J.Block) {
+                        J.Block b = (J.Block) it;
+                        if (b.isStatic()) {
+                            inStaticInitializer.set(true);
+                            return true;
+                        }
+                    } else if (it instanceof J.VariableDeclarations) {
+                        J.VariableDeclarations vd = (J.VariableDeclarations) it;
+                        if (vd.hasModifier(J.Modifier.Type.Static)) {
+                            inStaticInitializer.set(true);
+                            return true;
+                        }
+                    }
+                    return false;
+                });
+                return inStaticInitializer.get();
+            }
+
+            private CallGraph.Row row(String sourceSet, String fqn, JavaType.Method to) {
+                return new CallGraph.Row(
+                        sourceSet,
+                        fqn,
+                        inStaticInitializer() ? ""<clinit>"" : ""<init>"",
+                        """",
+                        CallGraph.ResourceType.METHOD,
+                        CallGraph.ResourceAction.CALL,
+                        to.getDeclaringType().getFullyQualifiedName(),
+                        to.getName(),
+                        parameters(to),
+                        resourceType(to),
+                        returnType(to)
+                );
+            }
+
+            private CallGraph.Row row(String sourceSet,JavaType.Method from, JavaType.Method to) {
+                return new CallGraph.Row(
+                        sourceSet,
+                        from.getDeclaringType().getFullyQualifiedName(),
+                        from.getName(),
+                        parameters(from),
+                        resourceType(from),
+                        CallGraph.ResourceAction.CALL,
+                        to.getDeclaringType().getFullyQualifiedName(),
+                        to.getName(),
+                        parameters(to),
+                        resourceType(to),
+                        returnType(to)
+                );
+            }
+        };
+
+    }
+
+    private static String parameters(JavaType.Method method) {
+        StringJoiner joiner = new StringJoiner("","");
+        for (JavaType javaType : method.getParameterTypes()) {
+            String string = javaType.toString();
+            joiner.add(string);
+        }
+        return joiner.toString();
+    }
+
+    private static CallGraph.ResourceType resourceType(JavaType.Method method) {
+        if (method.isConstructor()) {
+            return CallGraph.ResourceType.CONSTRUCTOR;
+        }
+        return CallGraph.ResourceType.METHOD;
+    }
+
+    private static String returnType(JavaType.Method method) {
+        return method.getReturnType().toString();
+    }
+}
+","{
+  ""includeStdLib"": ""boolean field""
+}"
+Find duplicate source files,"Record the presence of LSTs with duplicate paths, indicating that the same file was parsed more than once.",Java,"/*
+ * Copyright 2021 the original author or authors.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the ""License"");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an ""AS IS"" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.openrewrite;
+
+import org.jspecify.annotations.Nullable;
+import org.openrewrite.marker.SearchResult;
+import org.openrewrite.table.DuplicateSourceFiles;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import static java.util.Collections.emptyList;
+
+public class FindDuplicateSourceFiles extends ScanningRecipe<Map<Path, List<String>>> {
+    transient DuplicateSourceFiles duplicateSourceFiles = new DuplicateSourceFiles(this);
+
+    @Override
+    public String getDisplayName() {
+        return ""Find duplicate source files"";
+    }
+
+    @Override
+    public String getDescription() {
+        return ""Record the presence of LSTs with duplicate paths, indicating that the same file was parsed more than once."";
+    }
+
+    @Override
+    public Map<Path, List<String>> getInitialValue(ExecutionContext ctx) {
+        return new HashMap<>();
+    }
+
+    @Override
+    public TreeVisitor<?, ExecutionContext> getScanner(Map<Path, List<String>> acc) {
+        return new TreeVisitor<Tree, ExecutionContext>() {
+            @Override
+            public Tree visit(@Nullable Tree tree, ExecutionContext ctx) {
+                if (tree instanceof SourceFile) {
+                    acc.computeIfAbsent(((SourceFile) tree).getSourcePath(), k -> new ArrayList<>())
+                            .add(tree.getClass().getSimpleName());
+                }
+                return tree;
+            }
+        };
+    }
+
+    @Override
+    public Collection<? extends SourceFile> generate(Map<Path, List<String>> acc, ExecutionContext ctx) {
+        for (Map.Entry<Path, List<String>> path : acc.entrySet()) {
+            if (path.getValue().size() > 1) {
+                duplicateSourceFiles.insertRow(ctx, new DuplicateSourceFiles.Row(
+                        path.getKey().toString(),
+                        path.getValue().size(),
+                        new HashSet<>(path.getValue())
+                ));
+            }
+        }
+        return emptyList();
+    }
+
+    @Override
+    public TreeVisitor<?, ExecutionContext> getVisitor(Map<Path, List<String>> acc) {
+        return new TreeVisitor<Tree, ExecutionContext>() {
+            @Override
+            public Tree visit(@Nullable Tree tree, ExecutionContext ctx) {
+                assert tree instanceof SourceFile;
+                SourceFile s = (SourceFile) tree;
+                if(acc.containsKey(s.getSourcePath()) && acc.get(s.getSourcePath()).size() > 1) {
+                    s = SearchResult.found(s);
+                }
+                return s;
+            }
+        };
+    }
+}
+",{}
+Language composition report,,Java,"/*
+ * Copyright 2021 the original author or authors.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the ""License"");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an ""AS IS"" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.openrewrite;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Value;
+import org.jspecify.annotations.Nullable;
+import org.openrewrite.binary.Binary;
+import org.openrewrite.csharp.tree.Cs;
+import org.openrewrite.groovy.tree.G;
+import org.openrewrite.hcl.tree.Hcl;
+import org.openrewrite.java.tree.J;
+import org.openrewrite.json.tree.Json;
+import org.openrewrite.kotlin.tree.K;
+import org.openrewrite.properties.tree.Properties;
+import org.openrewrite.protobuf.tree.Proto;
+import org.openrewrite.python.tree.Py;
+import org.openrewrite.quark.Quark;
+import org.openrewrite.remote.Remote;
+import org.openrewrite.table.LanguageCompositionPerFile;
+import org.openrewrite.table.LanguageCompositionPerFolder;
+import org.openrewrite.table.LanguageCompositionPerRepository;
+import org.openrewrite.text.PlainText;
+import org.openrewrite.toml.tree.Toml;
+import org.openrewrite.tree.ParseError;
+import org.openrewrite.xml.tree.Xml;
+import org.openrewrite.yaml.tree.Yaml;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import static java.util.Collections.emptyList;
+
+@EqualsAndHashCode(callSuper = false)
+@Value
+public class LanguageComposition extends ScanningRecipe<LanguageComposition.Accumulator> {
+
+    transient LanguageCompositionPerRepository perRepositoryReport = new LanguageCompositionPerRepository(this);
+    transient LanguageCompositionPerFolder perFolderReport = new LanguageCompositionPerFolder(this);
+    transient LanguageCompositionPerFile perFileReport = new LanguageCompositionPerFile(this);
+
+    @Override
+    public String getDisplayName() {
+        return ""Language composition report"";
+    }
+
+    @Override
+    public String getDescription() {
+        //language=markdown
+        return ""Counts the number of lines of the various kinds of source code and data formats parsed by OpenRewrite. "" +
+               ""Comments are not included in line counts. "" +
+               ""This recipe emits its results as two data tables, making no changes to any source file. "" +
+               ""One data table is per-file, the other is per-repository."";
+    }
+
+    @Data
+    public static class Accumulator {
+        Map<String, Map<String, Counts>> folderToLanguageToCounts = new HashMap<>();
+    }
+
+    private static String containingFolderPath(SourceFile s) {
+        String sourcePath = PathUtils.separatorsToUnix(s.getSourcePath().toString());
+        int lastSlash = sourcePath.lastIndexOf('/');
+        if (lastSlash == -1) {
+            return """";
+        }
+        return s.getSourcePath().toString().substring(0, lastSlash);
+    }
+
+    @Override
+    public Accumulator getInitialValue(ExecutionContext ctx) {
+        return new Accumulator();
+    }
+
+    @Override
+    public TreeVisitor<?, ExecutionContext> getScanner(Accumulator acc) {
+        return new TreeVisitor<Tree, ExecutionContext>() {
+            @Override
+            public @Nullable Tree visit(@Nullable Tree tree, ExecutionContext ctx) {
+                if (!(tree instanceof SourceFile)) {
+                    return tree;
+                }
+
+                SourceFile s = (SourceFile) tree;
+                String folderPath = containingFolderPath(s);
+                // Parse failures *should* only ever appear on PlainText sources, but always checking finds a parser bug
+                boolean hasParseFailure = s.getMarkers().findFirst(ParseExceptionResult.class).isPresent();
+                if (s instanceof Quark || s instanceof Binary || s instanceof Remote) {
+                    Counts quarkCounts = acc.getFolderToLanguageToCounts()
+                            .computeIfAbsent(folderPath, k -> new HashMap<>())
+                            .computeIfAbsent(""Other/unknown/unparseable"", k -> new Counts());
+                    quarkCounts.fileCount++;
+                    perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                            s.getSourcePath().toString(),
+                            ""Other/unknown/unparseable"",
+                            s.getClass().getName(),
+                            0,
+                            hasParseFailure));
+                } else {
+                    int genericLineCount = LineCounter.count(s);
+                    if (s.getClass().getName().startsWith(""org.openrewrite.cobol.tree.CobolPreprocessor$Copybook"")) {
+                        Counts copybookCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Copybook"", k -> new Counts());
+                        copybookCounts.fileCount++;
+                        copybookCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Copybook"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s.getClass().getName().startsWith(""org.openrewrite.cobol.tree.Cobol"")) {
+                        Counts cobolCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Cobol"", k -> new Counts());
+                        cobolCounts.fileCount++;
+                        cobolCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Cobol"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof K) {
+                        Counts kotlinCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Kotlin"", k -> new Counts());
+                        kotlinCounts.fileCount++;
+                        // Don't have a kotlin-specific counter yet and Java count should be very close
+                        kotlinCounts.lineCount += org.openrewrite.java.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Kotlin"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof G) {
+                        Counts groovyCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Groovy"", k -> new Counts());
+                        groovyCounts.fileCount++;
+                        groovyCounts.lineCount += org.openrewrite.groovy.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Groovy"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Py) {
+                        Counts pythonCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Python"", k -> new Counts());
+                        pythonCounts.fileCount++;
+                        pythonCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Python"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Cs.CompilationUnit) {
+                        Counts csharpCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""C#"", k -> new Counts());
+                        csharpCounts.fileCount++;
+                        csharpCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""C#"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof J) {
+                        Counts javaCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Java"", k -> new Counts());
+                        javaCounts.fileCount++;
+                        javaCounts.lineCount += org.openrewrite.java.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Java"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Json) {
+                        Counts jsonCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Json"", k -> new Counts());
+                        jsonCounts.fileCount++;
+                        jsonCounts.lineCount += org.openrewrite.json.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Json"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Hcl) {
+                        Counts hclCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Hcl"", k -> new Counts());
+                        hclCounts.fileCount++;
+                        hclCounts.lineCount += org.openrewrite.hcl.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Hcl"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Properties) {
+                        Counts propertiesCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Properties"", k -> new Counts());
+                        propertiesCounts.fileCount++;
+                        propertiesCounts.lineCount += org.openrewrite.properties.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Properties"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Proto) {
+                        Counts protobufCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Protobuf"", k -> new Counts());
+                        protobufCounts.fileCount++;
+                        protobufCounts.lineCount += org.openrewrite.protobuf.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Protobuf"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Toml) {
+                        Counts tomlCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Toml"", k -> new Counts());
+                        tomlCounts.fileCount++;
+                        tomlCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Toml"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Xml) {
+                        Counts xmlCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Xml"", k -> new Counts());
+                        xmlCounts.fileCount++;
+                        xmlCounts.lineCount += org.openrewrite.xml.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Xml"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof Yaml) {
+                        Counts yamlCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Yaml"", k -> new Counts());
+                        yamlCounts.fileCount++;
+                        yamlCounts.lineCount += org.openrewrite.yaml.CountLinesVisitor.countLines(s);
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Yaml"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else if (s instanceof PlainText) {
+                        if (s.getSourcePath().endsWith("".js"") || s.getSourcePath().endsWith("".jsx"") || s.getSourcePath().endsWith("".mjs"")) {
+                            Counts javascriptCounts = acc.getFolderToLanguageToCounts()
+                                    .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                    .computeIfAbsent(""Javascript"", k -> new Counts());
+                            javascriptCounts.fileCount++;
+                            javascriptCounts.lineCount += genericLineCount;
+                            perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                    s.getSourcePath().toString(),
+                                    ""JavaScript"",
+                                    s.getClass().getName(),
+                                    genericLineCount,
+                                    hasParseFailure));
+                        } else if (s.getSourcePath().endsWith("".ts"") || s.getSourcePath().endsWith("".tsx"")) {
+                            Counts typescriptCounts = acc.getFolderToLanguageToCounts()
+                                    .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                    .computeIfAbsent(""TypeScript"", k -> new Counts());
+                            typescriptCounts.fileCount++;
+                            typescriptCounts.lineCount += genericLineCount;
+                            perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                    s.getSourcePath().toString(),
+                                    ""Typescript"",
+                                    s.getClass().getName(),
+                                    genericLineCount,
+                                    hasParseFailure));
+                        } else {
+                            Counts plainTextCounts = acc.getFolderToLanguageToCounts()
+                                    .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                    .computeIfAbsent(""Plain text"", k -> new Counts());
+                            plainTextCounts.fileCount++;
+                            plainTextCounts.lineCount += genericLineCount;
+                            perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                    s.getSourcePath().toString(),
+                                    ""Plain text"",
+                                    s.getClass().getName(),
+                                    genericLineCount,
+                                    hasParseFailure));
+                        }
+                    } else if (s instanceof ParseError) {
+                        Counts parseErrorCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Parse error"", k -> new Counts());
+                        parseErrorCounts.fileCount++;
+                        parseErrorCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Parse error"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    } else {
+                        Counts unknownCounts = acc.getFolderToLanguageToCounts()
+                                .computeIfAbsent(folderPath, k -> new HashMap<>())
+                                .computeIfAbsent(""Unknown"", k -> new Counts());
+                        unknownCounts.fileCount++;
+                        unknownCounts.lineCount += genericLineCount;
+                        perFileReport.insertRow(ctx, new LanguageCompositionPerFile.Row(
+                                s.getSourcePath().toString(),
+                                ""Unknown"",
+                                s.getClass().getName(),
+                                genericLineCount,
+                                hasParseFailure));
+                    }
+                }
+                return tree;
+            }
+        };
+    }
+
+    @Override
+    public Collection<? extends SourceFile> generate(Accumulator acc, ExecutionContext ctx) {
+        Map<String, Counts> languageToCount = new HashMap<>();
+        for (Map.Entry<String, Map<String, Counts>> entry : acc.getFolderToLanguageToCounts().entrySet()) {
+            for (Map.Entry<String, Counts> languageEntry : entry.getValue().entrySet()) {
+                perFolderReport.insertRow(ctx, new LanguageCompositionPerFolder.Row(entry.getKey(),
+                        languageEntry.getKey(), languageEntry.getValue().fileCount, languageEntry.getValue().lineCount));
+
+                Counts counts = languageToCount.computeIfAbsent(languageEntry.getKey(), k -> new Counts());
+                counts.fileCount += languageEntry.getValue().fileCount;
+                counts.lineCount += languageEntry.getValue().lineCount;
+            }
+        }
+        for (Map.Entry<String, Counts> entry : languageToCount.entrySet()) {
+            perRepositoryReport.insertRow(ctx, new LanguageCompositionPerRepository.Row(entry.getKey(), entry.getValue().fileCount, entry.getValue().lineCount));
+        }
+
+        return emptyList();
+    }
+
+    private static class Counts {
+        int lineCount;
+        int fileCount;
+    }
+
+    private static class LineCounter extends PrintOutputCapture<Integer> {
+        private int count;
+        private boolean startedLine;
+
+        public LineCounter() {
+            super(0);
+        }
+
+        static int count(SourceFile s) {
+            LineCounter counter = new LineCounter();
+            s.printAll(counter);
+            return counter.getLineCount();
+        }
+
+        @Override
+        public PrintOutputCapture<Integer> append(char c) {
+            if (c == '\n') {
+                count++;
+                startedLine = false;
+            } else {
+                startedLine = true;
+            }
+            return this;
+        }
+
+        @Override
+        public PrintOutputCapture<Integer> append(@Nullable String text) {
+            if (text == null) {
+                return this;
+            }
+            for (int i = 0; i < text.length(); i++) {
+                append(text.charAt(i));
+            }
+            return this;
+        }
+
+        int getLineCount() {
+            return count + (startedLine ? 1 : 0);
+        }
+    }
+
+}
+",{}
